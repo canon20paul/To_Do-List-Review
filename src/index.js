@@ -1,9 +1,9 @@
-import _, { indexOf } from 'lodash';
 import './index.css';
 import {TaskList} from './TasklistFile.js';
 import {Interaction} from './interactive_List.js'
 const textInputAdd = document.getElementById('addTT');
 const taskList = document.getElementById('task-list');
+
 function check(status) {
   if (status === true) { return "checked";
  } else { return "unchecked";
@@ -22,7 +22,7 @@ function display() {
 }
 display();
 //Add Task Event Listner
-document.querySelector('.save').addEventListener('click', (e) => {
+document.querySelector('.save').addEventListener('click', () => {
    TaskList.addTask(textInputAdd.value);
     location.reload();
 })
@@ -34,7 +34,7 @@ textInputAdd.addEventListener('keypress',  (e) => {
  //Delete Task Event Listner
   const deleteBtn = document.querySelectorAll('.img');
    deleteBtn.forEach((Btn) => {
-          Btn.addEventListener('click', (e) => {
+          Btn.addEventListener('click', () => {
                 TaskList.delete(Btn.title);
          location.reload();
     });
@@ -42,12 +42,12 @@ textInputAdd.addEventListener('keypress',  (e) => {
 //EditTask Event Listner
 const taskArray = document.querySelectorAll('.task');
 taskArray.forEach((task) => {
-  task.addEventListener('dblclick', (e) => {
+  task.addEventListener('dblclick', () => {
     task.contentEditable=true;
   });
   task.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') { task.contentEditable = false;
-      for(var i=0; i < TaskList.taskArray.length; i=1+i){
+    for(var i=0; i < TaskList.taskArray.length; i=1+i){
                 if(TaskList.taskArray[i].index==task.id){
     TaskList.taskArray[i].description=e.target.innerHTML;
         }
@@ -59,10 +59,9 @@ taskArray.forEach((task) => {
 //  Checkbox Event Listner
   const checkArray = document.querySelectorAll('.box');
   checkArray.forEach((checkB,i) => {
-    checkB.addEventListener('click', (e) => {
-       Interaction.updateComplete(i)
-         display();
-        location.reload();
+  checkB.addEventListener('click', () => {
+      Interaction.updateComplete(i)
+      location.reload();
    });
 });
 //Deleting Completed Tasks

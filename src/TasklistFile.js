@@ -1,8 +1,6 @@
 import { update } from "lodash";
 export  class TaskList {
-     constructor (){
-       this.taskArray = JSON.parse(localStorage.getItem('coward')) || [];
-            }
+     
 static addTask(desc){
         let index = this.taskArray.length ;
         let task = {
