@@ -1,4 +1,5 @@
 export  class Interaction  {
+    
     static updateComplete(index){
         const checkA = JSON.parse(localStorage.getItem('coward')) || [];
          if(checkA[index].completed=== false){
@@ -8,6 +9,7 @@ export  class Interaction  {
         }
         localStorage.setItem('coward', JSON.stringify(checkA));
     }
+
     static deleteComplete( ){
         const checkA = JSON.parse(localStorage.getItem('coward')) || []; 
         const taskCompleted = true
